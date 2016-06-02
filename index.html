@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Color Picker</title>
+	<link rel="stylesheet" type="text/css" href="css/ui.colorpicker.css">
+	<style type="text/css">
+		body { font-family: verdana, arial, sans-serif; color: white; background-color: black; font-size: 0.8em; }
+		#bg fieldset { border-width: 1px; width: 460px; }
+		#bg .fields { padding: 25px; margin-bottom: 20px; }
+		#bg div { clear: both; }
+		#bg label { float: left; width: 85px; }
+		#bg input { float: left; width: 190px; }
+		.ui-colorpicker input { float: none; width: auto; height: auto; }
+		#bg .submit { margin-top: 40px; text-align: center; }
+	</style>
+
+</head>
+<body>
+  <form id="bg" action="#">
+
+		<fieldset>
+			<legend>Background Color</legend>
+
+			<div class="fields">
+			
+				<div><label for="colorpicker">Color Picker:</label> <input type="text" id="colorpicker" name="colorpicker"/></div>
+
+				<div class="submit">
+					<button id="dochange">
+						Change Background
+					</button>
+				</div>
+			</div>
+			
+		</fieldset>
+<br/><br/><br/><br/><br/><br/><br/>	
+	</form>
+
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/jq.color.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+	var hideit = function(e, ui) { $(this).val('#'+ui.hex); $('.ui-colorpicker').css('display', 'none'); };
+	$('#bg #colorpicker').colorpicker({ hide: hideit, submit: hideit });
+
+	$('#dochange').click(function() {
+
+		$('body').css('background-color', $('#colorpicker').val());
+		console.log($('#colorpicker').val());
+		return false;
+	});
+	//console.log($('#colorpicker').val());
+});
+
+
+</script>
+</html>
